@@ -1,0 +1,114 @@
+{
+    "description": "Sample test data for BookBrain API testing",
+    
+    "sample_upload_requests": [
+        {
+            "endpoint": "POST /api/books/upload/",
+            "description": "Add a book by title search",
+            "request_body": {
+                "query": "The Great Gatsby",
+                "search_type": "title"
+            },
+            "expected_response": {
+                "message": "Successfully added X book(s). AI processing started.",
+                "books": ["list of book objects"]
+            }
+        },
+        {
+            "endpoint": "POST /api/books/upload/",
+            "description": "Add a book by ISBN",
+            "request_body": {
+                "query": "9780743273565",
+                "search_type": "isbn"
+            }
+        }
+    ],
+
+    "sample_scrape_requests": [
+        {
+            "endpoint": "POST /api/books/scrape/",
+            "description": "Bulk scrape Hindi literature",
+            "request_body": {
+                "topic": "Hindi literature Premchand",
+                "max_results": 5
+            }
+        },
+        {
+            "endpoint": "POST /api/books/scrape/",
+            "description": "Bulk scrape science fiction books",
+            "request_body": {
+                "topic": "science fiction",
+                "max_results": 10
+            }
+        }
+    ],
+
+    "sample_questions": [
+        {
+            "endpoint": "POST /api/books/ask/",
+            "question": "What books do you have in the library?",
+            "description": "Library overview question",
+            "request_body": {
+                "question": "What books do you have in the library?"
+            },
+            "expected_response_fields": ["answer", "sources", "confidence", "matched_books", "recommendations"]
+        },
+        {
+            "endpoint": "POST /api/books/ask/",
+            "question": "Tell me about Godan by Premchand",
+            "description": "Specific book information query",
+            "request_body": {
+                "question": "Tell me about Godan by Premchand"
+            },
+            "sample_answer": "Based on the books in the database: 'Godan,' a cornerstone of Hindi literature, is a powerful novel by Munshi Premchand that delves deep into the socio-economic realities of rural India in the early 20th century..."
+        },
+        {
+            "endpoint": "POST /api/books/ask/",
+            "question": "Recommend books similar to Godan",
+            "description": "Recommendation query",
+            "request_body": {
+                "question": "Recommend books similar to Godan"
+            },
+            "sample_answer": "Based on your interest, you might enjoy these books: 1. Nirmala 2. Devdas 3. Kamayani..."
+        },
+        {
+            "endpoint": "POST /api/books/ask/",
+            "question": "What genres are available?",
+            "description": "Genre exploration query",
+            "request_body": {
+                "question": "What genres are available?"
+            }
+        },
+        {
+            "endpoint": "POST /api/books/ask/",
+            "question": "Summarize the most popular book",
+            "description": "Summary request query",
+            "request_body": {
+                "question": "Summarize the most popular book"
+            }
+        }
+    ],
+
+    "sample_get_requests": [
+        {
+            "endpoint": "GET /api/books/",
+            "description": "List all books (paginated)"
+        },
+        {
+            "endpoint": "GET /api/books/?search=Premchand",
+            "description": "Search books by author name"
+        },
+        {
+            "endpoint": "GET /api/books/1/",
+            "description": "Get full details of book with ID 1"
+        },
+        {
+            "endpoint": "GET /api/books/1/recommendations/",
+            "description": "Get AI-powered recommendations for book ID 1"
+        },
+        {
+            "endpoint": "GET /api/stats/",
+            "description": "Get database statistics"
+        }
+    ]
+}
